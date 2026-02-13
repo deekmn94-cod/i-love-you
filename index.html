@@ -7,6 +7,8 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;700&display=swap');
 
+        
+        
         body {
             margin: 0;
             font-family: 'Noto Sans Lao', sans-serif;
@@ -34,6 +36,7 @@
             flex-direction: column;
             justify-content: center;
         }
+        
 
         .page { display: none; }
         .active { display: block; }
@@ -99,10 +102,12 @@
             0%, 100% { transform: translateY(0) scale(1); opacity: 0.8; }
             50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
         }
+        
 
     </style>
 </head>
 <body>
+
 
     <div class="container">
         <div id="page1" class="page active">
@@ -111,6 +116,8 @@
             <p>ຍິນດີຕ້ອນຮັບເຂົ້າສູ່ພື້ນທີ່ແຫ່ງຄວາມຮັກ</p>
             <button onclick="nextPage(2)">ເປີດເບິ່ງເລີຍ</button>
         </div>
+
+
 
         <div id="page2" class="page">
             <img src="pppp.png" alt="Our Photo">
@@ -138,15 +145,40 @@
         </div>
     </div>
 
+    <audio id="mySong" loop>
+    <source src="I Thought I Saw Your Face Today.mp3" type="audio/mpeg">
+    </audio>
+
+    
     <script>
-        function nextPage(pageNumber) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
+    function nextPage(pageNumber) {
+        var song = document.getElementById("mySong");
+
+        // ໃຫ້ເພງເລີ່ມຫຼິ້ນເມື່ອກົດປ່ຽນຈາກໜ້າ 1 ໄປໜ້າ 2
+        // ຫຼື ຖ້າເພງຍັງບໍ່ຫຼິ້ນ ກໍໃຫ້ມັນຫຼິ້ນທັນທີທີ່ກົດປຸ່ມໃດໜຶ່ງ
+        if (song.paused) {
+            song.play().catch(function(error) {
+                console.log("Play error:", error);
             });
-            document.getElementById('page' + pageNumber).classList.add('active');
         }
+
+        // ເຊື່ອງທຸກໜ້າ
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
+        });
+
+        // ສະແດງໜ້າທີ່ເລືອກ
+        document.getElementById('page' + pageNumber).classList.add('active');
+    }
+</script>
+
+        
+
+        
+
+
+       
     </script>
 
 </body>
-
 </html>
