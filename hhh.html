@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Noto Sans Lao', sans-serif;
+            background-color: #ffebee;
+            color: #d81b60;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .page { display: none; }
+        .active { display: block; }
+
+        img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        h1 { font-size: 24px; margin-bottom: 10px; z-index: 2; position: relative; }
+        p { font-size: 16px; line-height: 1.6; z-index: 2; position: relative; }
+
+        button {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+            z-index: 2;
+            position: relative;
+        }
+
+        button:hover { background-color: #f50057; transform: scale(1.05); }
+
+        /* ຕົບແຕ່ງໜ້າທີ 4 */
+        #page4 {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            margin: -20px;
+            padding: 40px 20px;
+            height: 100%;
+            border-radius: 20px;
+            color: white;
+            position: relative;
+        }
+
+        /* ອະນິເມຊັນຫົວໃຈສອງດວງ */
+        .hearts-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 40px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .heart1 { left: 20%; top: 20%; animation-delay: 0s; }
+        .heart2 { right: 20%; bottom: 20%; animation-delay: 1.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.8; }
+            50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="page1" class="page active">
+            <img src="https://images.unsplash.com/photo-1518562180175-34a163b1a9a6?w=500" alt="Cover">
+            <h1>Happy Valentine's Day ❤️</h1>
+            <p>ຍິນດີຕ້ອນຮັບເຂົ້າສູ່ພື້ນທີ່ແຫ່ງຄວາມຮັກ</p>
+            <button onclick="nextPage(2)">ເປີດເບິ່ງເລີຍ</button>
+        </div>
+
+        <div id="page2" class="page">
+            <img src="pppp.png" alt="Our Photo">
+            <h1>Memories with You</h1>
+            <p>ທຸກໆຊ່ວງເວລາທີ່ຜ່ານມາ ມີຄ່າສະເໝີ</p>
+            <button onclick="nextPage(3)">ຕໍ່ໄປ</button>
+        </div>
+
+        <div id="page3" class="page">
+            <div style="font-size: 60px;">💖</div>
+            <h1>ຄຳອວຍພອນ</h1>
+            <p>"ຂໍໃຫ້ຄວາມຮັກຂອງພວກເຮົາເບີກບານ ແລະ ສວຍງາມແບບນີ້ຕະຫຼອດໄປ."</p>
+            <button onclick="nextPage(4)">ເບິ່ງຂອງຂວັນສຸດທ້າຍ</button>
+        </div>
+
+        <div id="page4" class="page">
+            <div class="hearts-container">
+                <div class="floating-heart heart1">❤️</div>
+                <div class="floating-heart heart2">💖</div>
+            </div>
+            <h1>For My Dearest</h1>
+            <p>"I love you to the moon and back!"</p>
+            <p style="font-size: 14px;">ເຈົ້າຄືຄົນພິເສດທີ່ສຸດໃນໂລກຂອງຂ້ອຍ</p>
+            <button onclick="nextPage(1)" style="background: white; color: #ff4081;">ເລີ່ມໃໝ່</button>
+        </div>
+    </div>
+
+    <script>
+        function nextPage(pageNumber) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById('page' + pageNumber).classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
